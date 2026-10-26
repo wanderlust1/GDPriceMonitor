@@ -21,6 +21,10 @@ class GoldPriceRepository {
         "nf_AU0" to "沪金连续"
     )
 
+    /** 当前监控的品种列表（symbol, 展示名），供设置页配置阈值使用。 */
+    fun getMonitoredSymbols(): List<Pair<String, String>> =
+        symbols.map { it to (names[it] ?: it) }
+
     suspend fun getQuotes(): List<Quote> = withContext(Dispatchers.IO) {
         try {
             val raw = api.fetchRaw(symbols)

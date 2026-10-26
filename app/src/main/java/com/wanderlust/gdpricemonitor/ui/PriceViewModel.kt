@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wanderlust.gdpricemonitor.data.GoldPriceRepository
 import com.wanderlust.gdpricemonitor.data.model.Quote
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -50,9 +51,12 @@ class PriceViewModel(
         }
     }
 
-    /** 前台可见时每 intervalMs 轮询一次（在 repeatOnLifecycle(RESUMED) 内调用）。 */
+    private var pollingJob: Job? = null
+
+    /** 前台可见时每 intervalMs 轮询一次；重复调用会取消上一次轮询，避免叠加。 */
     fun startPolling(intervalMs: Long = 10_000) {
-        viewModelScope.launch {
+        pollingJob?.cancel()
+        pollingJob = viewModelScope.launch {
             while (true) {
                 refresh()
                 delay(intervalMs)

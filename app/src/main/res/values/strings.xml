@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">GDPriceMonitor</string>
+    <string name="app_name">金价监控</string>
     <string name="title_gold_monitor">国际金价监控</string>
     <string name="action_refresh">刷新</string>
     <string name="hint_last_updated">最近更新 %1$s</string>
     <string name="hint_loading">加载中…</string>
+    <string name="alert_explain">检测机制说明：\n• 前台检测：App 打开时每 10 秒自动拉取行情，价格穿越阈值立即弹出通知。\n• 后台检测：App 关闭后按设定的间隔（默认 5 分钟，可自定义）用精确闹钟拉取行情并评估；注意 Android 12+ 需授予“精确闹钟”权限，深度省电(Doze)下可能略有延迟。\n• 为保证及时收到预警：请在系统设置中授予本应用“通知”与“精确闹钟”权限，并将电池/省电策略设为“无限制”，避免被厂商省电管理杀掉进程导致漏提醒。闹钟不跨重启，重启后需重新打开 App。</string>
 </resources>
