@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GDPriceMonitor</string>
+    <string name="title_gold_monitor">国际金价监控</string>
+    <string name="action_refresh">刷新</string>
+    <string name="hint_last_updated">最近更新 %1$s</string>
+    <string name="hint_loading">加载中…</string>
+</resources>
